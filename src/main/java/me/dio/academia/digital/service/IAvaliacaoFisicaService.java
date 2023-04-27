@@ -1,12 +1,16 @@
 package me.dio.academia.digital.service;
 
+import me.dio.academia.digital.entity.Aluno;
 import me.dio.academia.digital.entity.AvaliacaoFisica;
+import me.dio.academia.digital.entity.form.AlunoUpdateForm;
 import me.dio.academia.digital.entity.form.AvaliacaoFisicaForm;
 import me.dio.academia.digital.entity.form.AvaliacaoFisicaUpdateForm;
 
 import java.util.List;
 
 public interface IAvaliacaoFisicaService {
+
+
   /**
    * Cria uma Avaliação Física e salva no banco de dados.
    * @param form - formulário referente aos dados para criação da Avaliação Física no banco de dados.
@@ -34,11 +38,12 @@ public interface IAvaliacaoFisicaService {
    * Física no banco de dados.
    * @return - Avaliação Física recém-atualizada.
    */
-  AvaliacaoFisica update(Long id, AvaliacaoFisicaUpdateForm formUpdate);
 
   /**
    * Deleta uma Avaliação Física específica.
    * @param id - id da Avaliação Física que será removida.
    */
   void delete(Long id);
+
+  void update(Long id, AvaliacaoFisicaUpdateForm formUpdate);
 }

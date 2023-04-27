@@ -9,6 +9,7 @@ import me.dio.academia.digital.service.IMatriculaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -47,7 +48,21 @@ public class MatriculaServiceImpl implements IMatriculaService {
   }
 
   @Override
-  public void delete(Long id) {}
+  public List<Matricula> getByDateMatricula(LocalDateTime dateMatricula) {
+    if(dateMatricula == null){
+      return matriculaRepository.findAll();
+    }else{
+      return matriculaRepository.findBydateMatricula(dateMatricula);
+    }
+
+  }
+
+
+
+  @Override
+  public void delete(Long id) {
+    matriculaRepository.deleteById(id);
+  }
 
 
 

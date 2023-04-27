@@ -3,6 +3,7 @@ package me.dio.academia.digital.service;
 import me.dio.academia.digital.entity.Matricula;
 import me.dio.academia.digital.entity.form.MatriculaForm;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface IMatriculaService {
@@ -26,7 +27,9 @@ public interface IMatriculaService {
    */
   List<Matricula> getAll(String bairro);
 
-  /**
+    List<Matricula> getByDateMatricula(LocalDateTime dateMatricula);
+
+    /**
    * Deleta uma Matrícula específica.
    * @param id - id da Matrícula que será removida.
    */

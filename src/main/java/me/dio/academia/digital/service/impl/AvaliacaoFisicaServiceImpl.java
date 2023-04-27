@@ -35,8 +35,7 @@ public class AvaliacaoFisicaServiceImpl implements IAvaliacaoFisicaService {
 
   @Override
   public AvaliacaoFisica get(Long id) {
-    return null;
-  }
+    return avaliacaoFisicaRepository.getById(id);}
 
   @Override
   public List<AvaliacaoFisica> getAll() {
@@ -45,12 +44,22 @@ public class AvaliacaoFisicaServiceImpl implements IAvaliacaoFisicaService {
   }
 
   @Override
-  public AvaliacaoFisica update(Long id, AvaliacaoFisicaUpdateForm formUpdate) {
-    return null;
+  public void delete(Long id) {
+    avaliacaoFisicaRepository.deleteById(id);
+
   }
 
   @Override
-  public void delete(Long id) {
+  public void update(Long id, AvaliacaoFisicaUpdateForm formUpdate) {
 
+    AvaliacaoFisica avaliacaoFisica = avaliacaoFisicaRepository.getById(id);
+    if(avaliacaoFisica != null) {
+      avaliacaoFisica.setAltura(formUpdate.getAltura());
+      avaliacaoFisica.setPeso(formUpdate.getPeso());
+      avaliacaoFisicaRepository.save(avaliacaoFisica);
+    }
+    else {
+      throw new RuntimeException("Avaliação não encontrado");
+    }
   }
 }
